@@ -18,25 +18,33 @@ def index():
 @auth.route('/register', methods=["POST"])
 def register():
   data = request.get_json()
+  print(data)
 
   user_data = {
     "email": data["email"],
     "password": gen_password(data['password'])
   }
+  print("user data ", user_data)
 
   user = User(**user_data)
   db.session.add(user)
   db.session.commit()
+  print("user: ", user)
 
   new_user = User.query.filter_by(email=data["email"]).first()
+  print("new user: ", new_user.id)
   profile_data = { "name": data["name"], "user_id": new_user.id }
 
+  print("profile data: ", profile_data)
   profile = Profile(**profile_data)
   db.session.add(profile)
   db.session.commit()
+  print("profile: ", profile)
 
   payload = { "name": profile.name, "id": profile.id }
+  
   token = create_token(payload)
+  print("token: ", token)
   return jsonify(payload=profile.serialize(),token=token), 200
 
 

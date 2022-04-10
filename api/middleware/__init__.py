@@ -19,6 +19,7 @@ def login_required(f):
     return decorated_function
 
 def create_token(payload):
+  print("payload: ", payload)
   return jwt.encode(payload, SECRET_KEY, algorithm='HS256')
   
 def read_token(req):
