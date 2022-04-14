@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 1ff5108b84db
+Revision ID: e01a88387214
 Revises: 
-Create Date: 2022-04-10 14:21:41.097900
+Create Date: 2022-04-14 10:40:26.931538
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1ff5108b84db'
+revision = 'e01a88387214'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,11 +38,11 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=True),
     sa.Column('birthYear', sa.Integer(), nullable=True),
-    sa.Column('answer_1', sa.Integer(), nullable=True),
-    sa.Column('answer_2', sa.Integer(), nullable=True),
-    sa.Column('answer_3', sa.Integer(), nullable=True),
-    sa.Column('answer_4', sa.Integer(), nullable=True),
-    sa.Column('answer_5', sa.Integer(), nullable=True),
+    sa.Column('ans_1', sa.String(length=100), nullable=True),
+    sa.Column('ans_2', sa.String(length=100), nullable=True),
+    sa.Column('ans_3', sa.String(length=100), nullable=True),
+    sa.Column('ans_4', sa.String(length=100), nullable=True),
+    sa.Column('ans_5', sa.String(length=100), nullable=True),
     sa.Column('comment', sa.String(length=250), nullable=True),
     sa.Column('zodiac', sa.String(length=100), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
